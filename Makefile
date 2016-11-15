@@ -16,6 +16,9 @@ make-index: create-index update-index
 clean:
 	-rm -rf public
 
+sync:
+	aws s3 --profile <yourawsprofile> sync --acl "public-read" public/ s3://example.com
+	
 build-deploy-local: build sync 
 
 all: build-deploy-local bust-cache
