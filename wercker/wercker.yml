@@ -1,0 +1,31 @@
+box: debian
+
+build:
+    steps:
+        - arjen/hugo-build:
+          version: "0.17"
+          config: config.toml
+        - script:
+          name: cat index.html
+          code: cat ./public/index.html 
+            
+algolia:
+    steps:
+        - install-packages:
+            packages: python-pip
+        - pip-install:
+          requirements_file: ""
+          packages_list: "algoliasearch"
+        - script:
+          name: Makefile algolia index
+          code: make make-index
+
+deploy:
+    steps:
+        - s3sync:
+          key-id: <yourid>
+          key-secret: <yoursecret>
+          bucket-url: <yourbucket>
+          source-dir: public/
+          delete-removed: true
+          opts: --acl-public
