@@ -18,7 +18,9 @@ You can see my Makefile here:
 
 ###Automatic Deploy via Wercker
 
-I had a few issues here, but one thing that really helped was to make sure empty folders had a .gitignore.
+I had a few issues here, but one thing that really helped was to make sure empty folders had a .gitignore.  You can see an example here:
+
+  https://github.com/noahgift/hugotools/blob/master/wercker/wercker.yml
 
 ###Creating real-time search with algolia
 
